@@ -8,9 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "build": "cd client && npm install && npm run build && cd ..",
-    "deploy": "cp -a client/build/. public/",
-    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -21,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/xtrmdarc/expensify/issues"
   },
-  "homepage": "https://github.com/xtrmdarc/expensify#readme"
+  "homepage": "https://github.com/xtrmdarc/expensify#readme",
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.17.2"
+  }
 }
