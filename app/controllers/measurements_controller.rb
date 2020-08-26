@@ -16,4 +16,9 @@ class MeasurementsController < ApplicationController
       render json: { code: 0}
     end
   end
+
+  def get_progress
+    measurements = Measurement.where(user_id: params[:user_id])
+    render json: measurements, status: :ok
+  end
 end
