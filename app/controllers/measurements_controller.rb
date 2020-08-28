@@ -18,7 +18,7 @@ class MeasurementsController < ApplicationController
   end
 
   def get_progress
-    measurements = Measurement.where(user_id: params[:user_id])
-    render json: measurements, status: :ok
+    measurements = Measurement.includes(:expense_category).where(user_id: params[:user_id])
+    render json: measurements.to_json(include:  [:expense_category]), status: :ok
   end
 end
