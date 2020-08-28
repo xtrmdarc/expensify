@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def login
     usr = User.find_by(username: params[:username])
     if usr
-      if usr.password == params[:password]
+      if usr.authenticate(params[:password])
         render json: usr, status: :ok
       else
         render json: {error: 'Invalid credentials'}, status: 400
