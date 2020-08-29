@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     new_user = User.new(username: params[:username], 
       password: params[:password], 
       password_confirmation: params[:password_confirmation])
-    
     if new_user.save
       render json: new_user, status: :ok
     else
