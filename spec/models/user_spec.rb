@@ -6,13 +6,13 @@ RSpec.describe User, type: :model do
     expect(user.valid?).to eq(false)
   end
 
-  it 'should be invalid if username has already been taken' do 
+  it 'should be invalid if username has already been taken' do
     User.create username: 'admin', password: '123', password_confirmation: '123'
     user = User.new username: 'admin', password: '1232', password_confirmation: '1232'
     expect(user.valid?).to eq(false)
   end
 
-  it 'should be valid ' do 
+  it 'should be valid ' do
     user = User.new username: 'test', password: '123', password_confirmation: '123'
     user.save!
     expect(user.valid?).to eq(true)

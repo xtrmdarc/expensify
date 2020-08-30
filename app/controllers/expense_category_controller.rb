@@ -4,7 +4,7 @@ class ExpenseCategoryController < ApplicationController
     render json: categories, status: :ok
   end
 
-  def get_category
+  def category
     cat = ExpenseCategory.where(id: params[:id]).first
     render json: cat, status: :ok
   end
