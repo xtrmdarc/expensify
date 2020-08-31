@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   post '/measurement/create', to: 'measurements#create'
   get '/category/:id', to: 'expense_category#category'
   get '/progress/:user_id', to: 'measurements#progress'
-
 end
