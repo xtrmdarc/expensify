@@ -5,7 +5,7 @@
 
 # Description
 
-> Expensify is a mobile-first web application built using React & Redux that helps users keep track of daily expenses to monitor their monthly cost of living. With expensify, you can add as many expenses as you want for a given date and watch how much you save or overspend per month in the track it page. This application uses React as the frontend framework and Rails for the backend API resources. The backend code base can be found [here](https://github.com/xtrmdarc/expensify-frontend).
+> Expensify is a mobile-first web application built using React & Redux that helps users keep track of daily expenses to monitor their monthly cost of living. With expensify, you can add as many expenses as you want for a given date and watch how much you save or overspend per month in the track it page. This application uses React as the frontend framework and Rails for the backend API resources. The frontend code base can be found [here](https://github.com/xtrmdarc/expensify-frontend).
 
 ## Live Demo
 
