@@ -1,4 +1,6 @@
 class MeasurementsController < ApplicationController
+  before_action :authorized
+  
   def index; end
 
   def create

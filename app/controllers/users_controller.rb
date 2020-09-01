@@ -1,9 +1,14 @@
+require 'JsonWebToken'
+
 class UsersController < ApplicationController
   def login
     usr = User.find_by(username: params[:username])
     if usr
       if usr.authenticate(params[:password])
-        render json: usr, status: :ok
+        p usr
+        puts usr
+        token = JsonWebToken::encode user_id: usr.id
+        render json: { user: usr, token: token }, status: :ok
       else
         render json: { error: 'Invalid credentials' }, status: 400
       end
