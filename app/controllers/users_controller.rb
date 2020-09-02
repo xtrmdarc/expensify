@@ -1,12 +1,12 @@
 require 'JsonWebToken'
 
 class UsersController < ApplicationController
+  before_action :authorized, only: [:auto_login]
+
   def login
     usr = User.find_by(username: params[:username])
     if usr
       if usr.authenticate(params[:password])
-        p usr
-        puts usr
         token = JsonWebToken::encode user_id: usr.id
         render json: { user: usr, token: token }, status: :ok
       else
@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     else
       render json: { error: 'User not found' }, status: 400
     end
+  end
+  
+  def auto_login
+    token = JsonWebToken::encode user_id: @current_user.id
+    render json: { user: @current_user, token: token }, status: :ok
   end
 
   def create
