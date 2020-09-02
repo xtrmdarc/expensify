@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
       header_token = header.split(' ')[-1]
 
       begin
-        user_id = JsonWebToken::decode(header_token)
+        user_id = JsonWebToken.decode(header_token)
         @current_user = User.find(user_id)
       rescue ActiveRecord::RecordNotFound => e
         render json: { errors: e.message }, status: :unauthorized
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
         render json: { errors: e.message }, status: :unauthorized
       end
     else
-      render json: {error: 'Missing authorization header'}, status: :unauthorized
+      render json: { error: 'Missing authorization header' }, status: :unauthorized
     end
   end
 end

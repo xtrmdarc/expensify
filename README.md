@@ -13,7 +13,7 @@
 - username: admin
 - password: 123
 
-[Live Demo Version](https://xtrmdarc-stockly.herokuapp.com/#/)
+[Live Demo Version](https://xtrmdarc-expensify-react.herokuapp.com/)
 
 ![above the fold image](./public/login_page.png)
 ![Stock List image](./public/signup_page.png)

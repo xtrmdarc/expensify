@@ -21,4 +21,9 @@ class MeasurementsController < ApplicationController
     measurements = Measurement.progress(params[:user_id])
     render json: measurements.to_json(include: [:expense_category]), status: :ok
   end
+
+  def progress_detail
+    measurements = Measurement.progress_detail(params[:user_id], params[:month])
+    render json: measurements.to_json(include: [:expense_category]), status: :ok
+  end
 end
