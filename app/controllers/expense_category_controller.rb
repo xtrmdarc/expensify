@@ -7,7 +7,13 @@ class ExpenseCategoryController < ApplicationController
   end
 
   def category
-    cat = ExpenseCategory.find(params[:id])
+    cat = ExpenseCategory.find(expense_category_params[:id])
     render json: cat, status: :ok
+  end
+
+  private
+
+  def expense_category_params
+    params.permit(:id)
   end
 end

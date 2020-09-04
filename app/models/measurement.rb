@@ -7,6 +7,7 @@ class Measurement < ApplicationRecord
   end
 
   def self.progress_detail(user_id, month)
-    includes(:expense_category).where(user_id: user_id).where('extract(month from date) = ?', month)
+    includes(:expense_category).where(user_id: user_id).where("cast(strftime('%m', date) as int) = ?", month)
+    # includes(:expense_category).where(user_id: user_id).where('extract(month from date) = ?', month)
   end
 end
