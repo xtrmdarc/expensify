@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::API
   def authorized
     header = request.headers['Authorization']
