@@ -4,12 +4,12 @@ class MeasurementsController < ApplicationController
   def index; end
 
   def create
-    # Implement with params
     new_measurement = Measurement.new(measurement_params)
 
     if new_measurement.save
       render json: { code: 1 }
     else
+      puts new_measurement.errors.full_messages
       render json: { code: 0 }
     end
   end
@@ -27,6 +27,6 @@ class MeasurementsController < ApplicationController
   private
 
   def measurement_params
-    params.permit(:ex_cat_id, :date, :user_id, :value, :month)
+    params.permit(:expense_category_id, :date, :user_id, :value, :month)
   end
 end

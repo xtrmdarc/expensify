@@ -1,5 +1,5 @@
 require 'json_web_token'
-
+require 'services/auth_token'
 class UsersController < ApplicationController
   before_action :authorized, only: [:auto_login]
 
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     usr = User.find_by(username: user_params[:username])
     if usr
       if usr.authenticate(user_params[:password])
-        token = JsonWebToken.encode user_id: usr.id
+        token = EncodeTokenService.fire(usr.id)
         render json: { user: usr, token: token }, status: :ok
       else
         render json: { error: 'Invalid credentials' }, status: 400
@@ -18,14 +18,14 @@ class UsersController < ApplicationController
   end
 
   def auto_login
-    token = JsonWebToken.encode user_id: @current_user.id
+    token = EncodeTokenService.fire(@current_user.id)
     render json: { user: @current_user, token: token }, status: :ok
   end
 
   def create
     new_user = User.new(user_params)
     if new_user.save
-      token = JsonWebToken.encode user_id: new_user.id
+      token = EncodeTokenService.fire(new_user.id)
       render json: { user: new_user, token: token }, status: :ok
     else
       render json: { errors: new_user.errors.full_messages }, status: 400
